@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 type metrics struct {
 	Impressions int64 `json:"impressions"`
@@ -22,6 +26,13 @@ var fakeMetrics = []metrics{
 	{Impressions: 79123, Clicks: 17274, Conversions: 542},
 }
 
+func getMetrics(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, fakeMetrics)
+}
+
 func main() {
-	fmt.Println("Hello, world!")
+	router := gin.Default()
+	router.GET("/metrics", getMetrics)
+
+	router.Run("localhost:8080")
 }
