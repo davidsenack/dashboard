@@ -7,9 +7,10 @@ import (
 )
 
 type metrics struct {
-	Impressions int64 `json:"impressions"`
-	Clicks      int64 `json:"clicks"`
-	Conversions int64 `json:"conversions"`
+	Campaign    string `json:"campaign"`
+	Impressions int64  `json:"impressions"`
+	Clicks      int64  `json:"clicks"`
+	Conversions int64  `json:"conversions"`
 }
 
 // ::TODO Add Test Campaign Data
@@ -19,11 +20,11 @@ type metrics struct {
 
 // !!TODO:: Remove Fake Testing Data!
 var fakeMetrics = []metrics{
-	{Impressions: 23832, Clicks: 8244, Conversions: 1281},
-	{Impressions: 374728, Clicks: 4728, Conversions: 918},
-	{Impressions: 4785, Clicks: 1432, Conversions: 234},
-	{Impressions: 4858211, Clicks: 38114, Conversions: 345},
-	{Impressions: 79123, Clicks: 17274, Conversions: 542},
+	{Campaign: "Save the Bees", Impressions: 23832, Clicks: 8244, Conversions: 1281},
+	{Campaign: "Save the Trees", Impressions: 374728, Clicks: 4728, Conversions: 918},
+	{Campaign: "Save the Clouds", Impressions: 4785, Clicks: 1432, Conversions: 234},
+	{Campaign: "Destroy the Clouds", Impressions: 4858211, Clicks: 38114, Conversions: 345},
+	{Campaign: "Fish", Impressions: 79123, Clicks: 17274, Conversions: 542},
 }
 
 func getMetrics(c *gin.Context) {
